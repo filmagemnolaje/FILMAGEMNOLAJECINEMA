@@ -1,0 +1,1242 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FILMAGEM NO LAJE — Portfólio Audiovisual 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    /* ─── TOKENS ─────────────────────────────────────────── */
+    :root {
+      --bg:           #0A0A0A;
+      --surface:      #111111;
+      --surface-2:    #161616;
+      --accent:       #E63228;
+      --accent-hover: #C4251C;
+      --text:         #F5F5F5;
+      --text-muted:   #888888;
+      --border:       #222222;
+      --radius:       4px;
+      --transition:   0.25s ease;
+    }
+
+    /* ─── RESET ──────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; width: 100%; object-fit: cover; }
+
+    /* ─── NAV ────────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 48px;
+      background: linear-gradient(to bottom, rgba(10,10,10,0.95) 0%, transparent 100%);
+    }
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px;
+      letter-spacing: 0.12em;
+      color: var(--text);
+    }
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      transition: color var(--transition);
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    /* ─── HERO ───────────────────────────────────────────── */
+    #hero {
+      position: relative;
+      height: 100vh;
+      min-height: 640px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to bottom, rgba(10,10,10,0.5) 0%, rgba(10,10,10,0.75) 100%),
+        url('assets/showreel-capa.jpg') center/cover no-repeat,
+        url('assets/showreel-placeholder.svg') center/cover no-repeat;
+      background-color: #1a1a1a;
+    }
+    /* Grain overlay */
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      opacity: 0.35;
+      pointer-events: none;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 900px;
+      padding: 0 24px;
+    }
+    .hero-eyebrow {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+    .hero-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(64px, 10vw, 112px);
+      line-height: 0.95;
+      letter-spacing: 0.04em;
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+    .hero-subtitle {
+      font-size: 13px;
+      font-weight: 300;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 32px;
+    }
+    .hero-quote {
+      font-size: clamp(18px, 2.5vw, 26px);
+      font-weight: 300;
+      color: rgba(245,245,245,0.72);
+      font-style: italic;
+      margin-bottom: 52px;
+      line-height: 1.4;
+    }
+    .btn-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--accent);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 18px 40px;
+      border-radius: var(--radius);
+      transition: background var(--transition), transform var(--transition);
+    }
+    .btn-cta:hover { background: var(--accent-hover); transform: translateY(-2px); }
+    .btn-cta svg { flex-shrink: 0; }
+    .hero-scroll {
+      position: absolute;
+      bottom: 36px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-muted);
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      z-index: 2;
+      animation: bounce 2s infinite;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50%       { transform: translateX(-50%) translateY(6px); }
+    }
+
+    /* ─── SECTION COMMONS ────────────────────────────────── */
+    section { padding: 120px 48px; }
+    .section-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(36px, 5vw, 60px);
+      letter-spacing: 0.05em;
+      color: var(--text);
+      margin-bottom: 48px;
+    }
+    .divider {
+      width: 48px;
+      height: 2px;
+      background: var(--accent);
+      margin-bottom: 48px;
+    }
+    .container { max-width: 1200px; margin: 0 auto; }
+
+    /* ─── SOBRE ──────────────────────────────────────────── */
+    #sobre { background: var(--surface); }
+    .sobre-grid {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 64px;
+      align-items: start;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .sobre-vertical-label {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 14px;
+      letter-spacing: 0.3em;
+      color: var(--text-muted);
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      transform: rotate(180deg);
+      white-space: nowrap;
+      padding-top: 8px;
+    }
+    .sobre-content p {
+      font-size: 17px;
+      font-weight: 300;
+      color: rgba(245,245,245,0.85);
+      line-height: 1.85;
+      margin-bottom: 24px;
+      max-width: 680px;
+    }
+    .sobre-content p:last-child { margin-bottom: 0; }
+    .sobre-content strong { color: var(--text); font-weight: 600; }
+    .sobre-quote {
+      font-size: 22px;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--accent);
+      border-left: 3px solid var(--accent);
+      padding-left: 24px;
+      margin-bottom: 32px;
+      line-height: 1.5;
+    }
+
+    /* ─── SERVIÇOS ───────────────────────────────────────── */
+    #servicos { background: var(--bg); }
+    .servicos-header { max-width: 1200px; margin: 0 auto 60px; }
+    .servicos-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2px;
+    }
+    .servico-card {
+      background: var(--surface);
+      padding: 48px 44px;
+      border: 1px solid var(--border);
+      transition: border-color var(--transition), background var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .servico-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px;
+      height: 0;
+      background: var(--accent);
+      transition: height 0.4s ease;
+    }
+    .servico-card:hover { background: var(--surface-2); border-color: #333; }
+    .servico-card:hover::before { height: 100%; }
+    .servico-number {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 48px;
+      color: var(--border);
+      line-height: 1;
+      margin-bottom: 20px;
+      transition: color var(--transition);
+    }
+    .servico-card:hover .servico-number { color: var(--accent); }
+    .servico-icon {
+      width: 36px;
+      height: 36px;
+      margin-bottom: 16px;
+      color: var(--accent);
+    }
+    .servico-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 28px;
+      letter-spacing: 0.06em;
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+    .servico-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .servico-list li {
+      font-size: 14px;
+      color: var(--text-muted);
+      padding-left: 16px;
+      position: relative;
+      line-height: 1.5;
+    }
+    .servico-list li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
+
+    /* ─── PROJETOS ───────────────────────────────────────── */
+    #projetos { background: var(--surface); }
+    .projetos-header { max-width: 1200px; margin: 0 auto 60px; }
+    .projetos-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+    .projeto-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform var(--transition), border-color var(--transition);
+    }
+    .projeto-card:hover { transform: translateY(-4px); border-color: #333; }
+    .projeto-thumb {
+      position: relative;
+      height: 240px;
+      background: var(--surface-2);
+      overflow: hidden;
+    }
+    .projeto-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .projeto-card:hover .projeto-thumb img { transform: scale(1.04); }
+    .projeto-thumb-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #161616 0%, #1e1e1e 100%);
+      color: var(--border);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 13px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+    .projeto-thumb-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10,10,10,0.7) 0%, transparent 60%);
+    }
+    .projeto-body { padding: 28px; flex: 1; display: flex; flex-direction: column; }
+    .projeto-badge {
+      display: inline-block;
+      background: rgba(230,50,40,0.15);
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 5px 10px;
+      border-radius: 2px;
+      border: 1px solid rgba(230,50,40,0.3);
+      margin-bottom: 14px;
+      line-height: 1;
+    }
+    .projeto-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 26px;
+      letter-spacing: 0.04em;
+      color: var(--text);
+      margin-bottom: 10px;
+      line-height: 1.1;
+    }
+    .projeto-context {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.65;
+      margin-bottom: 24px;
+      flex: 1;
+    }
+    .btn-projeto {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border: 1px solid rgba(230,50,40,0.4);
+      padding: 12px 20px;
+      border-radius: var(--radius);
+      transition: background var(--transition), color var(--transition);
+      align-self: flex-start;
+    }
+    .btn-projeto:hover { background: var(--accent); color: #fff; }
+
+    /* ─── CONTATO ────────────────────────────────────────── */
+    #contato {
+      background: var(--accent);
+      padding: 140px 48px;
+      text-align: center;
+    }
+    .contato-titulo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(52px, 8vw, 88px);
+      letter-spacing: 0.04em;
+      color: #0A0A0A;
+      margin-bottom: 56px;
+      line-height: 0.95;
+    }
+    .contato-links {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+    .contato-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 18px;
+      font-weight: 400;
+      color: rgba(10,10,10,0.85);
+      border-bottom: 1px solid rgba(10,10,10,0.25);
+      padding-bottom: 4px;
+      transition: color var(--transition), border-color var(--transition);
+    }
+    .contato-link:hover { color: #0A0A0A; border-color: #0A0A0A; }
+    .contato-divider {
+      width: 1px;
+      height: 32px;
+      background: rgba(10,10,10,0.2);
+    }
+    .contato-footer {
+      margin-top: 80px;
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(10,10,10,0.45);
+    }
+
+    /* ─── FOOTER ─────────────────────────────────────────── */
+    footer {
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      padding: 28px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .footer-brand {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 18px;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+    }
+    .footer-copy {
+      font-size: 12px;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+    }
+
+    /* ─── SOCIAL MÍDIA ───────────────────────────────────── */
+    #social-midia { background: var(--bg); }
+    .social-header { max-width: 1200px; margin: 0 auto 60px; }
+    .social-category-label {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 13px;
+      letter-spacing: 0.25em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin: 48px 0 20px;
+    }
+    .social-category-label:first-of-type { margin-top: 0; }
+    .social-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .social-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform var(--transition), border-color var(--transition);
+      position: relative;
+    }
+    .social-card:hover { transform: translateY(-3px); border-color: #333; }
+    .social-thumb {
+      position: relative;
+      aspect-ratio: 9/16;
+      background: var(--surface-2);
+      overflow: hidden;
+      max-height: 300px;
+    }
+    .social-thumb-wide {
+      aspect-ratio: 16/9;
+      max-height: 200px;
+    }
+    .social-thumb-bg {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #161616 0%, #1e1e1e 100%);
+      position: relative;
+    }
+    .social-play-icon {
+      width: 52px;
+      height: 52px;
+      background: rgba(230,50,40,0.9);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background var(--transition), transform var(--transition);
+    }
+    .social-card:hover .social-play-icon { background: var(--accent); transform: scale(1.1); }
+    .social-format-badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: rgba(10,10,10,0.85);
+      color: var(--text-muted);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 4px 8px;
+      border-radius: 2px;
+      border: 1px solid var(--border);
+    }
+    .social-body { padding: 18px 20px; flex: 1; display: flex; flex-direction: column; gap: 8px; }
+    .social-badge {
+      display: inline-block;
+      background: rgba(230,50,40,0.12);
+      color: var(--accent);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 4px 8px;
+      border-radius: 2px;
+      border: 1px solid rgba(230,50,40,0.25);
+      align-self: flex-start;
+    }
+    .social-title {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text);
+      line-height: 1.4;
+    }
+    .btn-social {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-top: 4px;
+      transition: opacity var(--transition);
+      align-self: flex-start;
+    }
+    .btn-social:hover { opacity: 0.75; }
+    .social-divider {
+      max-width: 1200px;
+      margin: 40px auto 0;
+      border: none;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ─── RESPONSIVE ─────────────────────────────────────── */
+    @media (max-width: 768px) {
+      nav { padding: 20px 24px; }
+      .nav-links { display: none; }
+      section { padding: 80px 24px; }
+      .sobre-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+      .sobre-vertical-label { writing-mode: horizontal-tb; transform: none; }
+      .servicos-grid { grid-template-columns: 1fr; gap: 0; }
+      .projetos-grid { grid-template-columns: 1fr; }
+      #contato { padding: 100px 24px; }
+      footer { flex-direction: column; gap: 12px; text-align: center; }
+      .social-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    /* ─── SMOOTH SCROLL OFFSET ───────────────────────────── */
+    :target { scroll-margin-top: 80px; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <span class="nav-logo">FILMAGEM NO LAJE</span>
+    <ul class="nav-links">
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#servicos">Serviços</a></li>
+      <li><a href="#projetos">Projetos</a></li>
+      <li><a href="#social-midia">Social Mídia</a></li>
+      <li><a href="#contato">Contato</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Portfólio Audiovisual 2026</p>
+      <h1 class="hero-title">FILMAGEM<br>NO LAJE</h1>
+      <p class="hero-subtitle">Portfólio Audiovisual 2026</p>
+      <blockquote class="hero-quote">
+        "Outras formas de ver<br>e praticar o mundo."
+      </blockquote>
+      <a href="#showreel" class="btn-cta">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <polygon points="5,2 14,8 5,14" fill="currentColor"/>
+        </svg>
+        Assistir ao Showreel
+      </a>
+    </div>
+    <div class="hero-scroll" aria-hidden="true">
+      <svg width="14" height="20" viewBox="0 0 14 20" fill="none">
+        <rect x="1" y="1" width="12" height="18" rx="6" stroke="currentColor" stroke-width="1.2"/>
+        <rect x="6" y="4" width="2" height="5" rx="1" fill="currentColor"/>
+      </svg>
+      Rolar
+    </div>
+  </section>
+
+  <!-- SOBRE -->
+  <section id="sobre">
+    <div class="sobre-grid">
+      <span class="sobre-vertical-label">Sobre</span>
+      <div class="sobre-content">
+        <p class="section-label">Quem é</p>
+        <h2 class="section-title">Eniton S<br>Vasconcelos</h2>
+        <div class="divider"></div>
+        <blockquote class="sobre-quote">
+          A imagem é uma linguagem viva —<br>não um registro, mas uma escolha.
+        </blockquote>
+        <p>
+          Eniton S Vasconcelos atua no audiovisual com visão sistêmica: da concepção visual na direção de fotografia
+          à montagem final, passando pela operação de câmera e pelo suporte à direção. Essa integração
+          entre funções não é acidente — é método.
+        </p>
+        <p>
+          Filmar já com o olhar da montagem significa que cada plano carrega intencionalidade desde o
+          set. Não há desperdício de imagem nem de intenção: o que entra no quadro já sabe onde vai chegar.
+        </p>
+        <p>
+          O território entre o documentário e a ficção é onde a marca <strong>FILMAGEM NO LAJE</strong>
+          opera com mais potência: transmutando ideias em imagens que existem tanto no real quanto no
+          imaginário.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVIÇOS -->
+  <section id="servicos">
+    <div class="servicos-header">
+      <p class="section-label">O que faço</p>
+      <h2 class="section-title">Soluções<br>Audiovisuais</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="servicos-grid">
+
+      <!-- 01 -->
+      <div class="servico-card">
+        <div class="servico-number">01</div>
+        <svg class="servico-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="18" cy="18" r="10"/>
+          <line x1="18" y1="4" x2="18" y2="8"/>
+          <line x1="18" y1="28" x2="18" y2="32"/>
+          <line x1="4" y1="18" x2="8" y2="18"/>
+          <line x1="28" y1="18" x2="32" y2="18"/>
+        </svg>
+        <h3 class="servico-title">Direção de Fotografia</h3>
+        <ul class="servico-list">
+          <li>Concepção visual e identidade estética do projeto</li>
+          <li>Paleta de luz e direção de iluminação</li>
+          <li>Decupagem de câmera e planejamento de cobertura</li>
+          <li>Linguagem de cor e look de imagem</li>
+        </ul>
+      </div>
+
+      <!-- 02 -->
+      <div class="servico-card">
+        <div class="servico-number">02</div>
+        <svg class="servico-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="4" y="10" width="22" height="16" rx="2"/>
+          <polyline points="26,15 32,11 32,25 26,21"/>
+        </svg>
+        <h3 class="servico-title">Operação de Câmera</h3>
+        <ul class="servico-list">
+          <li>Câmera em mão e movimentos orgânicos</li>
+          <li>Steadicam e planos de deslocamento</li>
+          <li>Tripé e cobertura estática dramática</li>
+          <li>Cobertura documental de eventos ao vivo</li>
+        </ul>
+      </div>
+
+      <!-- 03 -->
+      <div class="servico-card">
+        <div class="servico-number">03</div>
+        <svg class="servico-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="4" y="8" width="28" height="20" rx="2"/>
+          <line x1="12" y1="8" x2="12" y2="28"/>
+          <line x1="20" y1="8" x2="20" y2="28"/>
+          <line x1="4" y1="18" x2="32" y2="18"/>
+        </svg>
+        <h3 class="servico-title">Edição &amp; Montagem</h3>
+        <ul class="servico-list">
+          <li>Corte narrativo e construção de ritmo</li>
+          <li>Montagem paralela e estrutura dramática</li>
+          <li>Color grading e tratamento de imagem</li>
+          <li>Finalização e entrega multiplataforma</li>
+        </ul>
+      </div>
+
+      <!-- 04 -->
+      <div class="servico-card">
+        <div class="servico-number">04</div>
+        <svg class="servico-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M6 30 L6 14 L18 6 L30 14 L30 30"/>
+          <rect x="14" y="20" width="8" height="10"/>
+        </svg>
+        <h3 class="servico-title">Assistência de Direção &amp; Produção</h3>
+        <ul class="servico-list">
+          <li>Gestão de set e fluxo de produção</li>
+          <li>Breakdown de roteiro e continuidade</li>
+          <li>Suporte à direção na captação</li>
+          <li>Relatórios de produção e logística</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PROJETOS -->
+  <section id="projetos">
+    <div class="projetos-header">
+      <p class="section-label">Trabalhos Selecionados</p>
+      <h2 class="section-title">Estudos<br>de Caso</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="projetos-grid">
+
+      <!-- 1 -->
+      <article class="projeto-card">
+        <div class="projeto-thumb">
+          <img src="assets/thumbnails/estado-de-alegria.jpg"
+               onerror="this.src='assets/thumbnails/estado-de-alegria.svg'"
+               alt="Estado de Alegria — Carnaval Bahia 2026" />
+          <div class="projeto-thumb-overlay"></div>
+        </div>
+        <div class="projeto-body">
+          <span class="projeto-badge">2º Assistente de Direção</span>
+          <h3 class="projeto-title">Estado de Alegria<br>Carnaval Bahia 2026</h3>
+          <p class="projeto-context">
+            Cobertura audiovisual do carnaval baiano com linguagem entre o jornalístico e o poético.
+            A festa como território — caos, cor e corpo num único plano sequência.
+          </p>
+          <a href="https://drive.google.com/file/d/1ZrIaNc9foF-T1Y_OuIsP4eyssvNTaVnX/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn-projeto" data-video-url="https://drive.google.com/file/d/1ZrIaNc9foF-T1Y_OuIsP4eyssvNTaVnX/view?usp=drive_link">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+              <polygon points="3,1 11,6 3,11" fill="currentColor"/>
+            </svg>
+            Ver vídeo completo
+          </a>
+        </div>
+      </article>
+
+      <!-- 2 -->
+      <article class="projeto-card">
+        <div class="projeto-thumb">
+          <img src="assets/thumbnails/salvador-que-pulsa.jpg"
+               onerror="this.src='assets/thumbnails/salvador-que-pulsa.svg'"
+               alt="Salvador que Pulsa" />
+          <div class="projeto-thumb-overlay"></div>
+        </div>
+        <div class="projeto-body">
+          <span class="projeto-badge">Assist. de Direção / Assist. de Fotografia</span>
+          <h3 class="projeto-title">Salvador<br>que Pulsa</h3>
+          <p class="projeto-context">
+            Retrato urbano da cidade de Salvador — ritmo, pele e território. Uma cidade filmada
+            de dentro para fora, onde o enquadramento não documenta: escolhe.
+          </p>
+          <a href="https://youtu.be/7IEgr_24hYM" target="_blank" rel="noopener noreferrer" class="btn-projeto" data-video-url="https://youtu.be/7IEgr_24hYM">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+              <polygon points="3,1 11,6 3,11" fill="currentColor"/>
+            </svg>
+            Ver vídeo completo
+          </a>
+        </div>
+      </article>
+
+      <!-- 3 -->
+      <article class="projeto-card">
+        <div class="projeto-thumb">
+          <img src="assets/thumbnails/mixxxture-now.png"
+               onerror="this.src='assets/thumbnails/mixxxture-now.svg'"
+               alt="Mixxxture Now!" />
+          <div class="projeto-thumb-overlay"></div>
+        </div>
+        <div class="projeto-body">
+          <span class="projeto-badge">Filmmaker</span>
+          <h3 class="projeto-title">Mixxxture Now!</h3>
+          <p class="projeto-context">
+            Registro de evento cultural com montagem rítmica orientada pela música.
+            Cada corte responde ao som — o set virou partitura.
+          </p>
+          <a href="https://youtu.be/8VzhSJrnU38" target="_blank" rel="noopener noreferrer" class="btn-projeto" data-video-url="https://youtu.be/8VzhSJrnU38">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+              <polygon points="3,1 11,6 3,11" fill="currentColor"/>
+            </svg>
+            Ver vídeo completo
+          </a>
+        </div>
+      </article>
+
+      <!-- 4 -->
+      <article class="projeto-card">
+        <div class="projeto-thumb">
+          <img src="assets/thumbnails/as-merendeiras.png"
+               onerror="this.src='assets/thumbnails/as-merendeiras.svg'"
+               alt="As Merendeiras" />
+          <div class="projeto-thumb-overlay"></div>
+        </div>
+        <div class="projeto-body">
+          <span class="projeto-badge">Direção / Dir. de Fotografia / Montagem</span>
+          <h3 class="projeto-title">As Merendeiras</h3>
+          <p class="projeto-context">
+            Documentário sobre trabalhadoras da alimentação escolar — olhar íntimo e político.
+            A câmera entra onde o discurso não chega.
+          </p>
+          <a href="https://youtu.be/tr5hj_qGrpE" target="_blank" rel="noopener noreferrer" class="btn-projeto" data-video-url="https://youtu.be/tr5hj_qGrpE">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+              <polygon points="3,1 11,6 3,11" fill="currentColor"/>
+            </svg>
+            Ver vídeo completo
+          </a>
+        </div>
+      </article>
+
+      <!-- 5 -->
+      <article class="projeto-card">
+        <div class="projeto-thumb">
+          <img src="assets/thumbnails/o-gura.png"
+               onerror="this.src='assets/thumbnails/o-gura.svg'"
+               alt="O Gura" />
+          <div class="projeto-thumb-overlay"></div>
+        </div>
+        <div class="projeto-body">
+          <span class="projeto-badge">Dir. de Fotografia / Edição</span>
+          <h3 class="projeto-title">O Gura</h3>
+          <p class="projeto-context">
+            Ficção curta com construção visual densa e narrativa de personagem.
+            Cada quadro sustenta o peso de uma história que se recusa a explicar.
+          </p>
+          <a href="https://youtu.be/hfUMml1DLxw" target="_blank" rel="noopener noreferrer" class="btn-projeto" data-video-url="https://youtu.be/hfUMml1DLxw">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+              <polygon points="3,1 11,6 3,11" fill="currentColor"/>
+            </svg>
+            Ver vídeo completo
+          </a>
+        </div>
+      </article>
+
+      <!-- 6 -->
+      <article class="projeto-card">
+        <div class="projeto-thumb">
+          <img src="assets/thumbnails/quando-eu-crescer.png"
+               onerror="this.src='assets/thumbnails/quando-eu-crescer.svg'"
+               alt="Quando eu Crescer" />
+          <div class="projeto-thumb-overlay"></div>
+        </div>
+        <div class="projeto-body">
+          <span class="projeto-badge">Operação de Câmera / Assist. de Direção</span>
+          <h3 class="projeto-title">Quando eu Crescer</h3>
+          <p class="projeto-context">
+            Produção com crianças — gestão de set e sensibilidade documental aplicada à ficção.
+            O imprevisível do real como matéria-prima da narrativa.
+          </p>
+          <a href="https://youtu.be/Lp3sIRltavc" target="_blank" rel="noopener noreferrer" class="btn-projeto" data-video-url="https://youtu.be/Lp3sIRltavc">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+              <polygon points="3,1 11,6 3,11" fill="currentColor"/>
+            </svg>
+            Ver vídeo completo
+          </a>
+        </div>
+      </article>
+
+      <!-- 7 — full width -->
+      <article class="projeto-card" style="grid-column: 1 / -1; flex-direction: row; max-height: 300px;">
+        <div class="projeto-thumb" style="width: 420px; flex-shrink: 0; height: auto;">
+          <img src="assets/thumbnails/capoeira.png"
+               onerror="this.src='assets/thumbnails/capoeira.svg'"
+               alt="Capoeira"
+               style="height: 100%;" />
+          <div class="projeto-thumb-overlay"></div>
+        </div>
+        <div class="projeto-body" style="justify-content: center;">
+          <span class="projeto-badge">Direção / Roteiro / Dir. de Fotografia / Edição</span>
+          <h3 class="projeto-title">Capoeira</h3>
+          <p class="projeto-context">Registro da capoeira como linguagem corporal e cultural — movimento como dramaturgia.
+            O ginga vira sintaxe. O jogo vira sequência.
+          </p>
+          <a href="https://youtu.be/p_q2OwJWqRw" target="_blank" rel="noopener noreferrer" class="btn-projeto" data-video-url="https://youtu.be/p_q2OwJWqRw">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+              <polygon points="3,1 11,6 3,11" fill="currentColor"/>
+            </svg>
+            Ver vídeo completo
+          </a>
+        </div>
+      </article>
+
+      <!-- 8 — Modo Avião -->
+      <article class="projeto-card">
+        <div class="projeto-thumb">
+          <img src="assets/thumbnails/modo-aviao.jpg"
+               onerror="this.src='assets/thumbnails/modo-aviao.svg'"
+               alt="Modo Avião — Mixxxture" />
+          <div class="projeto-thumb-overlay"></div>
+        </div>
+        <div class="projeto-body">
+          <span class="projeto-badge">Filmmaker</span>
+          <h3 class="projeto-title">Modo Avião<br><span style="font-size:18px;opacity:0.6;">Mixxxture</span></h3>
+          <p class="projeto-context">
+            Videoclipe da banda Mixxxture — direção de imagem com olhar autoral,
+            onde o ritmo da música dita a gramática visual de cada plano.
+          </p>
+          <a href="https://youtu.be/T65PO9ji5CA" target="_blank" rel="noopener noreferrer" class="btn-projeto" data-video-url="https://youtu.be/T65PO9ji5CA">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+              <polygon points="3,1 11,6 3,11" fill="currentColor"/>
+            </svg>
+            Ver vídeo completo
+          </a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- SOCIAL MÍDIA -->
+  <section id="social-midia">
+    <div class="social-header">
+      <p class="section-label">Conteúdo Digital</p>
+      <h2 class="section-title">Social Mídia<br>&amp; Mobile</h2>
+      <div class="divider"></div>
+    </div>
+
+    <!-- CATEGORIA: MIXXXTURE -->
+    <div class="container">
+      <p class="social-category-label">Mixxxture — Chamadas &amp; Reels</p>
+    </div>
+    <div class="social-grid">
+
+      <article class="social-card">
+        <div class="social-thumb">
+          <div class="social-thumb-bg">
+            <div class="social-play-icon">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <polygon points="5,2 16,9 5,16" fill="white"/>
+              </svg>
+            </div>
+          </div>
+          <span class="social-format-badge">Vertical · MOV</span>
+        </div>
+        <div class="social-body">
+          <span class="social-badge">Reels / Stories</span>
+          <p class="social-title">Chamada Mixxxture Show &amp; Sumairu</p>
+          <a href="https://drive.google.com/file/d/1dz7MK4lnKZ_OUWPshhWCPMD_9-biugDg/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-social">
+            <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><polygon points="2,1 9,5 2,9" fill="currentColor"/></svg>
+            Assistir
+          </a>
+        </div>
+      </article>
+
+      <article class="social-card">
+        <div class="social-thumb">
+          <div class="social-thumb-bg">
+            <div class="social-play-icon">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <polygon points="5,2 16,9 5,16" fill="white"/>
+              </svg>
+            </div>
+          </div>
+          <span class="social-format-badge">Vertical · MOV</span>
+        </div>
+        <div class="social-body">
+          <span class="social-badge">Reels / Stories</span>
+          <p class="social-title">Chamada Show Mixxxture &amp; Sumairu — Versão 2</p>
+          <a href="https://drive.google.com/file/d/1ONmQ_l5ARsNA-SCb_Y8JVTAlxFBUI6gr/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn-social">
+            <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><polygon points="2,1 9,5 2,9" fill="currentColor"/></svg>
+            Assistir
+          </a>
+        </div>
+      </article>
+
+      <article class="social-card">
+        <div class="social-thumb">
+          <div class="social-thumb-bg">
+            <div class="social-play-icon">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <polygon points="5,2 16,9 5,16" fill="white"/>
+              </svg>
+            </div>
+          </div>
+          <span class="social-format-badge">Vertical · MOV</span>
+        </div>
+        <div class="social-body">
+          <span class="social-badge">Reels / Stories</span>
+          <p class="social-title">Convite Mixxxture Show</p>
+          <a href="https://drive.google.com/file/d/1vM1h7Jrbn_Xjgre0WQPnTmesvlYa0_av/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn-social">
+            <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><polygon points="2,1 9,5 2,9" fill="currentColor"/></svg>
+            Assistir
+          </a>
+        </div>
+      </article>
+
+      <article class="social-card">
+        <div class="social-thumb">
+          <div class="social-thumb-bg">
+            <div class="social-play-icon">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <polygon points="5,2 16,9 5,16" fill="white"/>
+              </svg>
+            </div>
+          </div>
+          <span class="social-format-badge">Horizontal · MP4</span>
+        </div>
+        <div class="social-body">
+          <span class="social-badge">Feed / Youtube</span>
+          <p class="social-title">Mixxxture — Chamada para Evento da Banda</p>
+          <a href="https://drive.google.com/file/d/1TZhybWREG9_nvebTsr31YINlDBXBa1mg/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn-social">
+            <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><polygon points="2,1 9,5 2,9" fill="currentColor"/></svg>
+            Assistir
+          </a>
+        </div>
+      </article>
+
+      <article class="social-card">
+        <div class="social-thumb">
+          <div class="social-thumb-bg">
+            <div class="social-play-icon">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <polygon points="5,2 16,9 5,16" fill="white"/>
+              </svg>
+            </div>
+          </div>
+          <span class="social-format-badge">Horizontal · MP4</span>
+        </div>
+        <div class="social-body">
+          <span class="social-badge">Feed / Youtube</span>
+          <p class="social-title">Mixxxture — Chamada Show da Banda</p>
+          <a href="https://drive.google.com/file/d/1lch2gzFq0Kp7WeUNIg3W58R9c0vu8hAM/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn-social">
+            <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><polygon points="2,1 9,5 2,9" fill="currentColor"/></svg>
+            Assistir
+          </a>
+        </div>
+      </article>
+
+      <article class="social-card">
+        <div class="social-thumb">
+          <div class="social-thumb-bg">
+            <div class="social-play-icon">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <polygon points="5,2 16,9 5,16" fill="white"/>
+              </svg>
+            </div>
+          </div>
+          <span class="social-format-badge">Vertical · MOV</span>
+        </div>
+        <div class="social-body">
+          <span class="social-badge">Reels / Stories</span>
+          <p class="social-title">Mixxxture — Chamada Show</p>
+          <a href="https://drive.google.com/file/d/1ado16sgBj7vJNsdU98OWIkhkd0Vu3g_z/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn-social">
+            <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><polygon points="2,1 9,5 2,9" fill="currentColor"/></svg>
+            Assistir
+          </a>
+        </div>
+      </article>
+
+      <article class="social-card">
+        <div class="social-thumb">
+          <div class="social-thumb-bg">
+            <div class="social-play-icon">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <polygon points="5,2 16,9 5,16" fill="white"/>
+              </svg>
+            </div>
+          </div>
+          <span class="social-format-badge">Vertical · MOV</span>
+        </div>
+        <div class="social-body">
+          <span class="social-badge">Reels — Cobertura</span>
+          <p class="social-title">Mixxxture Reels — Cobertura Real Time</p>
+          <a href="https://drive.google.com/file/d/1YmB7gJQWwb9puPP5XnidsDrwqqOkhJSf/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn-social">
+            <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><polygon points="2,1 9,5 2,9" fill="currentColor"/></svg>
+            Assistir
+          </a>
+        </div>
+      </article>
+
+    </div>
+
+    <hr class="social-divider" />
+
+    <!-- CATEGORIA: ONG -->
+    <div class="container" style="margin-top: 0;">
+      <p class="social-category-label" style="margin-top: 40px;">ONG — Conteúdo Institucional</p>
+    </div>
+    <div class="social-grid">
+
+      <article class="social-card">
+        <div class="social-thumb">
+          <div class="social-thumb-bg">
+            <div class="social-play-icon">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <polygon points="5,2 16,9 5,16" fill="white"/>
+              </svg>
+            </div>
+          </div>
+          <span class="social-format-badge">Horizontal · MP4</span>
+        </div>
+        <div class="social-body">
+          <span class="social-badge">Institucional</span>
+          <p class="social-title">Convite ONG</p>
+          <a href="https://drive.google.com/file/d/1_x8T2WjERzGAAof0n0EO2DKhPuQgKLWQ/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn-social">
+            <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><polygon points="2,1 9,5 2,9" fill="currentColor"/></svg>
+            Assistir
+          </a>
+        </div>
+      </article>
+
+      <article class="social-card">
+        <div class="social-thumb">
+          <div class="social-thumb-bg">
+            <div class="social-play-icon">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <polygon points="5,2 16,9 5,16" fill="white"/>
+              </svg>
+            </div>
+          </div>
+          <span class="social-format-badge">Vertical · MOV</span>
+        </div>
+        <div class="social-body">
+          <span class="social-badge">Documentário Curto</span>
+          <p class="social-title">Mutirão de Limpeza no Instituto</p>
+          <a href="https://drive.google.com/drive/folders/1LBohxURJa7nrkL4u0UXQDTKgk3Jz6xOn?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-social">
+            <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><polygon points="2,1 9,5 2,9" fill="currentColor"/></svg>
+            Assistir
+          </a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- CONTATO -->
+  <section id="contato">
+    <h2 class="contato-titulo">Vamos criar<br>juntos?</h2>
+    <div class="contato-links">
+      <a href="mailto:filmagemnolajecinema@gmail.com" class="contato-link">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="2" y="4" width="16" height="12" rx="2"/>
+          <polyline points="2,4 10,12 18,4"/>
+        </svg>
+        filmagemnolajecinema@gmail.com
+      </a>
+      <div class="contato-divider" aria-hidden="true"></div>
+      <a href="https://instagram.com/filmagem.no.laje" target="_blank" rel="noopener noreferrer" class="contato-link">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="2" y="2" width="16" height="16" rx="4"/>
+          <circle cx="10" cy="10" r="4"/>
+          <circle cx="14.5" cy="5.5" r="0.8" fill="currentColor" stroke="none"/>
+        </svg>
+        @filmagem.no.laje
+      </a>
+    </div>
+    <p class="contato-footer">FILMAGEM NO LAJE &nbsp;·&nbsp; Bahia, Brasil &nbsp;·&nbsp; 2026</p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-brand">FILMAGEM NO LAJE</span>
+    <span class="footer-copy">© 2026 — Todos os direitos reservados</span>
+  </footer>
+
+  <script>
+    // Atualiza href dos botões de projeto quando data-video-url for preenchido
+    document.querySelectorAll('.btn-projeto[data-video-url]').forEach(btn => {
+      const url = btn.getAttribute('data-video-url');
+      if (url && url.trim() !== '') btn.href = url;
+    });
+
+    // Anima cards ao entrar na viewport
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.style.opacity = '1';
+          e.target.style.transform = e.target.classList.contains('projeto-card')
+            ? 'translateY(0)' : '';
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.projeto-card, .servico-card').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      if (el.classList.contains('projeto-card')) el.style.transform = 'translateY(20px)';
+      observer.observe(el);
+    });
+  </script>
+
+</body>
+</html>
