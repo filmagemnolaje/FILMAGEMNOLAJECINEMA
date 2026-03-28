@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="480" viewBox="0 0 800 480">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0d14"/>
+      <stop offset="100%" style="stop-color:#0a0a0a"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="480" fill="url(#g)"/>
+  <line x1="0" y1="160" x2="800" y2="160" stroke="#1f1f1f" stroke-width="1"/>
+  <line x1="0" y1="320" x2="800" y2="320" stroke="#1f1f1f" stroke-width="1"/>
+  <line x1="266" y1="0" x2="266" y2="480" stroke="#1f1f1f" stroke-width="1"/>
+  <line x1="533" y1="0" x2="533" y2="480" stroke="#1f1f1f" stroke-width="1"/>
+  <rect x="0" y="0" width="4" height="480" fill="#E63228"/>
+  <text x="52" y="200" font-family="serif" font-size="120" fill="#1a1a1a" font-weight="bold">07</text>
+  <text x="52" y="290" font-family="Arial, sans-serif" font-size="34" fill="#F5F5F5" font-weight="bold" letter-spacing="2">CAPOEIRA</text>
+  <text x="52" y="330" font-family="Arial, sans-serif" font-size="20" fill="#E63228" letter-spacing="4">LINGUAGEM CORPORAL E CULTURAL</text>
+  <text x="52" y="390" font-family="Arial, sans-serif" font-size="13" fill="#555555" letter-spacing="2">DIREÇÃO / ROTEIRO / DIR. DE FOTOGRAFIA / EDIÇÃO</text>
+  <polyline points="720,40 760,40 760,80" fill="none" stroke="#E63228" stroke-width="1.5"/>
+  <polyline points="720,440 760,440 760,400" fill="none" stroke="#E63228" stroke-width="1.5"/>
+</svg>
